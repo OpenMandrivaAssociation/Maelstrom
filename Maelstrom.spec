@@ -20,7 +20,7 @@ Patch4:    Maelstrom-3.0.6-64bit-fixes.patch.bz2
 URL:       http://www.devolution.com/~slouken/Maelstrom/
 BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires:	SDL_net-devel
-BuildRequires:	XFree86-devel
+BuildRequires:	X11-devel
 BuildRequires:	alsa-lib-devel
 BuildRequires:	esound-devel
 BuildRequires:	texinfo
