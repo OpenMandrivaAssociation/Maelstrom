@@ -1,5 +1,5 @@
 %define version  3.0.6
-%define release 11mdk
+%define release  %mkrel 11
 %define name Maelstrom
 
 Summary:   Maelstrom
