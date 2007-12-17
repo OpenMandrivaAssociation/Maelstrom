@@ -18,7 +18,6 @@ Patch2:	   Maelstrom-3.0.6-datadir.patch.bz2
 Patch3:	   Maelstrom-3.0.6-gcc3.4.patch.bz2
 Patch4:    Maelstrom-3.0.6-64bit-fixes.patch.bz2
 URL:       http://www.devolution.com/~slouken/Maelstrom/
-BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires:	SDL_net-devel
 BuildRequires:	X11-devel
 BuildRequires:	alsa-lib-devel
