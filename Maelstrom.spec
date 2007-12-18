@@ -51,18 +51,16 @@ rm -rf %buildroot
 %makeinstall_std GAME_INSTALLDIR=%buildroot/%_gamesdatadir/%name
 # %_bindir=%buildroot/%_gamesbindir
 
-(cd $RPM_BUILD_ROOT
-mkdir -p ./%_menudir
-cat > ./%_menudir/%{name} << EOF
-?package(%{name}):\
-command="%_gamesbindir/Maelstrom"\
-title="Maelstrom"\
-longtitle="Asteroids game"\
-section="Amusement/Arcade" \
-needs="x11"\
-icon="Maelstrom.png"
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
+cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
+[Desktop Entry]
+Type=Application
+Exec=%_gamesbindir/Maelstrom
+Name=Maelstrom
+Comment=Asteroids game
+Categories=Game;ArcadeGame;
+Icon=Maelstrom
 EOF
-) 
 
 mkdir -p $RPM_BUILD_ROOT%{_miconsdir}
 mkdir -p $RPM_BUILD_ROOT%{_liconsdir}
@@ -93,7 +91,7 @@ fi
 %doc COPYING CREDITS README* Changelog Docs
 %attr(2755,root,games) %_gamesbindir/Maelstrom*
 %_gamesdatadir/Maelstrom
-%_menudir/*
+%{_datadir}/applications/mandriva-*.desktop
 %_iconsdir/*.png
 %_miconsdir/*
 %_liconsdir/*
