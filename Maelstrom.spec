@@ -75,11 +75,15 @@ mv %buildroot%_gamesdatadir/Maelstrom/Maelstrom-Scores %buildroot/var/lib/games/
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%if %mdkversion < 200900
 %post
 %update_menus
+%endif
 
+%if %mdkversion < 200900
 %postun
 %clean_menus
+%endif
 
 %pre
 # in Maelstrom <= 3.0.6-4mdk %_gamesbindir/Maelstrom is a directory
