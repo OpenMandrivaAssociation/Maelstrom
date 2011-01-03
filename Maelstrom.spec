@@ -12,19 +12,14 @@ Source0:   %{name}-%{version}.tar.bz2
 Source10: %name.16.png
 Source11: %name.32.png
 Source12: %name.48.png
-Patch:     maelstrom-snd2wav.patch.bz2
-Patch1:    Maelstrom-3.0.6-scorefile.patch.bz2
-Patch2:	   Maelstrom-3.0.6-datadir.patch.bz2	
-Patch3:	   Maelstrom-3.0.6-gcc3.4.patch.bz2
-Patch4:    Maelstrom-3.0.6-64bit-fixes.patch.bz2
+Patch1:    Maelstrom-3.0.6-scorefile.patch
+Patch2:	   Maelstrom-3.0.6-datadir.patch
+Patch3:	   Maelstrom-3.0.6-gcc3.4.patch
+Patch4:    Maelstrom-3.0.6-64bit-fixes.patch
 URL:       http://www.devolution.com/~slouken/Maelstrom/
 BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires:	SDL_net-devel
-BuildRequires:	X11-devel
-BuildRequires:	alsa-lib-devel
-BuildRequires:	esound-devel
-BuildRequires:	texinfo
-BuildRequires:	automake1.4
+BuildRequires:	SDL-devel
 
 %description
 Maelstrom is a rockin' asteroids game ported from the Macintosh
@@ -33,16 +28,15 @@ to UNIX and then SDL by Sam Lantinga <slouken@devolution.com>
 
 %prep
 %setup -q
-%patch0 -p1
 %patch1 -b .scores
 %patch2 -p1 -b .libdir
 %patch3 -p1
 %patch4 -p1 -b .64bit-fixes
 
+touch ChangeLog NEWS AUTHORS
+
 %build
-aclocal-1.4
-automake-1.4 -a
-autoconf
+autoreconf -fi
 %configure2_5x --disable-rpath --bindir=%_gamesbindir --libdir=%_gamesdatadir
 
 %make
@@ -50,7 +44,8 @@ autoconf
 %install
 rm -rf %buildroot
 %makeinstall_std GAME_INSTALLDIR=%buildroot/%_gamesdatadir/%name
-# %_bindir=%buildroot/%_gamesbindir
+install -D -m755 Maelstrom %buildroot/%_gamesbindir/Maelstrom
+install -D -m755 Maelstrom-netd %buildroot/%_gamesbindir/Maelstrom-netd
 
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
 cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
