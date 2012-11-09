@@ -1,0 +1,22 @@
+--- Maelstrom-3.0.6/configure.in~	2002-10-20 04:53:32.000000000 +0200
++++ Maelstrom-3.0.6/configure.in	2003-07-21 15:35:14.000000000 +0200
+@@ -105,7 +105,7 @@
+         GAME_INSTALLDIR="\$(prefix)/games/$PACKAGE"
+         ;;
+     *)
+-        GAME_INSTALLDIR="\$(prefix)/games/$PACKAGE"
++        GAME_INSTALLDIR="\$(datadir)/games/$PACKAGE"
+         ;;
+ esac
+ AC_SUBST(GAME_INSTALLDIR)
+--- Maelstrom-3.0.6/Makefile.am~	2002-10-20 06:19:40.000000000 +0200
++++ Maelstrom-3.0.6/Makefile.am	2003-07-21 15:43:35.000000000 +0200
+@@ -65,7 +65,7 @@
+ 
+ # Special install rule for the game
+ install:
+-	make install_gamedata target=@GAME_INSTALLDIR@
++	make install_gamedata target=$(GAME_INSTALLDIR)
+ 
+ install_gamedata:
+ 	sh mkinstalldirs $(target)/
