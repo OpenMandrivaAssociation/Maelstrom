@@ -1,5 +1,5 @@
 %define version  3.0.6
-%define release  %mkrel 13
+%define release  14
 %define name Maelstrom
 
 Summary:   Maelstrom
