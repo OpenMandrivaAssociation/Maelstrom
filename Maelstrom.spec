@@ -16,7 +16,7 @@ Patch1:    Maelstrom-3.0.6-scorefile.patch
 Patch2:	   Maelstrom-3.0.6-datadir.patch
 Patch3:	   Maelstrom-3.0.6-gcc3.4.patch
 Patch4:    Maelstrom-3.0.6-64bit-fixes.patch
-URL:       http://www.devolution.com/~slouken/Maelstrom/
+URL:       https://www.devolution.com/~slouken/Maelstrom/
 BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires:	SDL_net-devel
 BuildRequires:	SDL-devel
